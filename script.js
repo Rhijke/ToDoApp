@@ -12,17 +12,14 @@ let toDoCount = 0;
 let uncheckedItems = 0;
 
 function newTodo() {
-  classNames["TODO_TEXT"] = prompt(
-    "Please enter a to do item.",
-    "Nothing to do now."
-  );
-  if (classNames["TODO_TEXT"] !== "") increaseItemCount();
+  let toDoTask = toDoText();
+  increaseItemCount();
 
   // create the necessary elements
   let li = document.createElement("li");
   let label = document.createElement("label");
   let toDo = document.createElement("span");
-  let description = document.createTextNode(classNames["TODO_TEXT"]);
+  let description = document.createTextNode(toDoTask);
   let checkbox = document.createElement("input");
 
   // Create check box
@@ -56,8 +53,13 @@ function updateUnchecked() {
   uncheckedCountSpan.textContent = uncheckedItems;
 }
 function updateToDo() {
-  let newToDo = prompt("Enter new to do task.", "Nothing to do now.");
-  if (newToDo === "" || newToDo === null) {
-    newToDo = prompt("Please enter a new to do task", "Nothing to do now.");
-  } else this.textContent = newToDo;
+  let newToDo = toDoText();
+  this.textContent = newToDo;
+}
+function toDoText() {
+  let todo = "";
+  while (!todo) {
+    todo = prompt("Enter new to do task.", "Nothing to do now.");
+  }
+  return todo;
 }
