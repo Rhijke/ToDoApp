@@ -40,10 +40,15 @@ ul {
   opacity: 0.7;
 }
 
+.controls {
+  border-style: groove;
+}
 .title,
 .controls,
 .button {
   flex: none;
+  padding: 10px;
+  margin: 5px;
 }
 
 .button {
