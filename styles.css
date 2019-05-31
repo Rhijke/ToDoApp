@@ -57,7 +57,6 @@ ul {
 
 .todo-list {
   flex: 1 1 0;
-  margin-top: 20px;
   padding: 20px;
   overflow-y: auto;
 }
