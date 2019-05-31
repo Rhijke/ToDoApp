@@ -57,5 +57,7 @@ function updateUnchecked() {
 }
 function updateToDo() {
   let newToDo = prompt("Enter new to do task.", "Nothing to do now.");
-  this.textContent = newToDo;
+  if (newToDo === "" || newToDo === null) {
+    newToDo = prompt("Please enter a new to do task", "Nothing to do now.");
+  } else this.textContent = newToDo;
 }
