@@ -1,10 +1,3 @@
-const classNames = {
-  TODO_ITEM: "todo-container",
-  TODO_CHECKBOX: "todo-checkbox",
-  TODO_TEXT: "todo-text",
-  TODO_DELETE: "todo-delete"
-};
-
 const list = document.getElementById("todo-list");
 const itemCountSpan = document.getElementById("item-count");
 const uncheckedCountSpan = document.getElementById("unchecked-count");
@@ -25,9 +18,22 @@ function newTodo() {
   // Create check box
   checkbox.type = "checkbox";
   checkbox.name = "slct[]";
+
   // Allow user to check off to do items and to edit to do items
   checkbox.onclick = updateUnchecked;
   toDo.onclick = updateToDo;
+
+  // Create the delete option
+  let removeToDoButton = document.createElement("span");
+  removeToDoButton.innerHTML = "&nbsp;&#10007;&nbsp;";
+  removeToDoButton.className = "todo-delete";
+  removeToDoButton.onclick = function() {
+    toDoCount--;
+    if (list.removeChild(li).childNodes[0].control.checked === false)
+      uncheckedItems--;
+    itemCountSpan.textContent = toDoCount;
+    uncheckedCountSpan.textContent = uncheckedItems;
+  };
 
   //Add  the new to do item to the to do app list
   label.appendChild(checkbox); // add the box to the element
@@ -36,6 +42,7 @@ function newTodo() {
   toDo.appendChild(description);
   li.appendChild(label);
   li.appendChild(toDo);
+  li.appendChild(removeToDoButton);
   list.appendChild(li);
 }
 

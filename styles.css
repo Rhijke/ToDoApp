@@ -66,10 +66,12 @@ ul {
 
 .todo-delete {
   margin: 10px;
+  cursor: pointer;
 }
 
 .todo-checkbox {
   margin: 10px;
+  cursor: pointer;
 }
 
 .todo-container {
